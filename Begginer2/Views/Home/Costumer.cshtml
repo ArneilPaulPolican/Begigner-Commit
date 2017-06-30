@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Costumer";
+}
+
+<h2>Costumer</h2>
+
+<div id="myDynamicTable">
+
+</div>
+<script type="text/javascript">
+
+    function getcostumerList() {
+        var apiUrl = "/api/costumer/list";
+        $.ajax({
+            url: apiUrl,
+            type: 'GET',
+            contentType: 'application/json;charset=utf-8',
+            success: function (result) {
+                if (result.length > 0) {
+                    var myTableDiv = document.getElementById("myDynamicTable");
+
+                    var table = document.createElement('TABLE');
+                    table.border = '0';
+                    table.className = 'table table-bordered';
+                    var tableBody = document.createElement('TBODY');
+                    table.appendChild(tableBody);
+
+                    for (var i = 0; i < result.length; i++) {
+                        var tr = document.createElement('TR');
+                        tableBody.appendChild(tr);
+
+                        for (var j = 0; j < 8; j++) {
+                            var td = document.createElement('TD');
+                            var th = document.createElement('THEAD');
+                            var btn = document.createElement('button');
+
+                            if (j == 0) {
+                                btn.appendChild(document.createTextNode("Del"))
+                            }
+                            else if (j == 1) {
+                                td.appendChild(document.createTextNode(result[i].ID));
+                            }
+                            else if (j == 2) {
+                                td.appendChild(document.createTextNode(result[i].FName));
+                            }
+                            else if (j == 3) {
+                                td.appendChild(document.createTextNode(result[i].Mname));
+                            }
+                            else if (j == 4) {
+                                td.appendChild(document.createTextNode(result[i].Lname));
+                            }
+                            else if (j == 5) {
+                                td.appendChild(document.createTextNode(result[i].Address))
+                            }
+                            else if (j == 6) {
+                                td.appendChild(document.createTextNode(result[i].ContactNumber));
+                            }
+                            else if (j == 7) {
+                                td.appendChild(document.createTextNode(result[i].CreditLimit    ));
+                            }
+                            tr.appendChild(td);
+                        }
+                    }
+
+                    myTableDiv.appendChild(table);
+                } else {
+                    alert("No Data");
+                }
+            }
+        });
+    }
+
+    window.onload = function () {
+        getcostumerList();
+    };
+</script>

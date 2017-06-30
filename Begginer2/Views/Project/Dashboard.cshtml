@@ -1,0 +1,185 @@
+﻿
+@{
+    ViewBag.Title = "Dasboard";
+}
+
+<div class="w3-display-top w3-margin-top w3-center">
+    <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>Menu</b></span><span class="w3-padding w3-hide-small w3-green w3-text-light-grey ">Dasboard</span></h1>
+</div>
+@Html.Partial("_DynamiTabs")
+<h2></h2>
+
+<!-- Tabular -->
+<div class="container">
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#home">Menu</a></li>
+        <li><a href="#menu1">Reports</a></li>
+        <li><a href="#menu2">Settings</a></li>
+        <li><a href="#menu3">Utilities</a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <div class="list-group-item">
+                <div class="row">
+                    <div>
+                        <div class="col-sm-3">
+                            <button type="button" class="btn btn-default btn-lg btn-block"><h3>Suplier</h3></button>
+                            <button type="button" class="btn btn-default btn-lg btn-block"><h3>Product</h3></button>
+                            <a href="../Project/Costumer" class="btn btn-default btn-lg btn-block"><h3>Costumer</h3></a>
+                        </div>
+                        <div class="col-sm-3 container">
+                            <button type="button" class="btn btn-default btn-lg btn-block"><h3> Menu 2</h3></button>
+                            <button type="button" class="btn btn-default btn-lg btn-block"><h3> Menu 2</h3></button>
+                            <button type="button" class="btn btn-default btn-lg btn-block"><h3> Menu 2</h3></button>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="button" class="btn btn-default btn-lg btn-block"><h3> Menu 2</h3></button>
+                            <button type="button" class="btn btn-default btn-lg btn-block"><h3> Menu 2</h3></button>
+                            <button type="button" class="btn btn-default btn-lg btn-block"><h3> Menu 2</h3></button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="col-sm-4">
+                            <div class="well">sdgfvdsvsdv</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="menu1" class="tab-pane fade">
+            <div class="list-group-item">
+                <div id="myDynamicTable" align="right" class="table">
+                    <div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="menu2" class="tab-pane fade">
+            <table id="costumerCollectionGrid" class="grid border-custom"></table>
+        </div>
+        <div id="menu3" class="tab-pane fade">
+            <div class="list-group-item">
+                <div id="">
+                    /////////////
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <p class="act"><b>Active Tab</b>: <span></span></p>
+    <p class="prev"><b>Previous Tab</b>: <span></span></p>
+
+
+</div>
+
+<!-- Modal -->
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/software-js")
+
+<script type="text/javascript">
+
+    var costumerGrid;
+    var costumerList;
+
+
+    function GotoCostumer() {
+
+    }
+
+
+
+
+
+
+    //function getcostumerList() {
+    //    var costumerresult = new wijmo.collections.ObservableArray()
+    //    var apiUrl = "/api/costumer/list";
+    //    $.ajax({
+    //        url: apiUrl,
+    //        type: 'GET',
+    //        contentType: 'application/json;charset=utf-8',
+    //        success: function (result) {
+    //            if (result.length > 0) {
+    //                var myTableDiv = document.getElementById("myDynamicTable");
+
+    //                var table = document.createElement('TABLE');
+    //                table.border = '0';
+    //                table.className = 'table table-bordered';
+
+    //                var tableBody = document.createElement('TBODY');
+    //                table.appendChild(tableBody);
+    //                for (var i = 0; i < result.length; i++) {
+    //                    var tr = document.createElement('TR');
+    //                    tableBody.appendChild(tr);
+
+
+    //                    for (var j = 0; j < 9; j++) {
+    //                        var td = document.createElement('TD');
+    //                        td.setAttribute
+    //                        var th = document.createElement('THEAD');
+
+    //                        var btn = document.createElement('button');
+    //                        //btn.setAttribute("ID", "myBtn");
+    //                        btn.id = 'myBtn';
+    //                        btn.innerHTML = "Edit"
+    //                        btn.className = 'btn btn-primary';
+
+    //                        var btn2 = document.createElement('button');
+    //                        //btn2.setAttribute("ID", "btnDelete");
+    //                        btn2.innerHTML = "Delete"
+    //                        btn2.className = 'btn btn-danger';
+
+    //                        if (j == 0) {
+    //                            td.appendChild(btn);
+    //                        }
+    //                        else if (j == 1) {
+
+    //                            td.appendChild(btn2);
+    //                        }
+    //                        else if (j == 2) {
+    //                            td.appendChild(document.createTextNode(result[i].ID));
+
+    //                        }
+    //                        else if (j == 3) {
+    //                            td.appendChild(document.createTextNode(result[i].FName));
+    //                        }
+    //                        else if (j == 4) {
+    //                            td.appendChild(document.createTextNode(result[i].Mname));
+    //                        }
+    //                        else if (j == 5) {
+    //                            td.appendChild(document.createTextNode(result[i].Lname));
+    //                        }
+    //                        else if (j == 6) {
+    //                            td.appendChild(document.createTextNode(result[i].Address))
+    //                        }
+    //                        else if (j == 7) {
+    //                            td.appendChild(document.createTextNode(result[i].ContactNumber));
+    //                        }
+    //                        else if (j == 8) {
+    //                            td.appendChild(document.createTextNode(result[i].CreditLimit));
+    //                        }
+    //                        tr.appendChild(td);
+    //                    }
+    //                }
+
+    //                myTableDiv.appendChild(table);
+    //            } else {
+    //                alert("No Data");
+    //            }
+    //        }
+    //    });
+    //}
+
+
+
+
+
+    //window.onload = function () {
+    //    getcostumerList();
+    //};
+</script>
+

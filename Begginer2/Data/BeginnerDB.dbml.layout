@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.75, 11.875" name="BeginnerDB">
+  <DataContextMoniker Name="/BeginnerDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="e5af467d-c137-4dcf-b166-b1eef95f736b" absoluteBounds="0.75, 0.75, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/BeginnerDBDataContext/AspNetRole" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bc4ee631-ec64-470a-8b67-dac4325a6701" absoluteBounds="0.765, 1.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1102f19c-70ef-476f-9595-e85b0de65517" absoluteBounds="3.5, 6.625, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/BeginnerDBDataContext/AspNetUserClaim" />
+      <nestedChildShapes>
+        <elementListCompartment Id="00d2a3f9-881f-453c-b059-253e285f2108" absoluteBounds="3.515, 7.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4e4b4d49-c5cc-4558-9324-c1d892a442f1" absoluteBounds="3.5, 4.375, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/BeginnerDBDataContext/AspNetUserLogin" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f69a383d-3a46-4db8-9c60-22f65f5122d5" absoluteBounds="3.515, 4.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cf511c7a-2308-4971-ae26-779b69730849" absoluteBounds="3.5, 1.75, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/BeginnerDBDataContext/AspNetUserRole" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b132f622-49e2-4f95-bc3a-8674a5ed484b" absoluteBounds="3.515, 2.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="552b1dca-a2ba-4f09-9441-ef41d06fd139" absoluteBounds="0.75, 2.75, 2, 3.1170068359375">
+      <DataClassMoniker Name="/BeginnerDBDataContext/AspNetUser" />
+      <nestedChildShapes>
+        <elementListCompartment Id="61f3bf89-15f0-4743-a396-0001d5aba475" absoluteBounds="0.765, 3.21, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e045254b-0f0e-4da2-98b7-1fda2146dc51" absoluteBounds="6.75, 4.75, 2, 1.1939925130208327">
+      <DataClassMoniker Name="/BeginnerDBDataContext/CourseTbl" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e30cb671-f584-4892-8502-d3df51f934ea" absoluteBounds="6.765, 5.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ec940525-b971-4f6c-a636-82b3b86af176" absoluteBounds="6.75, 7.125, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/BeginnerDBDataContext/MstCostumer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3a5b5531-cd1f-4c21-8e10-f48bbe055dd8" absoluteBounds="6.765, 7.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2e7bb7e4-b182-4dd6-b583-d92574df84d2" absoluteBounds="0.75, 9.125, 2, 2.5401025390624987">
+      <DataClassMoniker Name="/BeginnerDBDataContext/MstItem" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b303d3c1-2b01-479c-916c-f34c9eb40d9d" absoluteBounds="0.765, 9.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="16900572-4dd1-4591-a58f-65f7fb64e8de" absoluteBounds="6.75, 1.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/BeginnerDBDataContext/MstSupplier" />
+      <nestedChildShapes>
+        <elementListCompartment Id="43b5cbed-7dfb-4682-93a1-6ed8747d18cf" absoluteBounds="6.765, 1.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="246e13d9-9d1e-4bf3-b9ed-872bc5f288d4" absoluteBounds="9.5, 4.375, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/BeginnerDBDataContext/StudentList" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dd39c17b-b1ce-4d23-86c2-68b3d5997f89" absoluteBounds="9.515, 4.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="eb798c39-2caa-4e44-8fc6-3ad1e2c86e6f" absoluteBounds="9.5, 1.375, 2, 1.9631982421875003">
+      <DataClassMoniker Name="/BeginnerDBDataContext/TrnItem" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9a2f11d5-df3d-4c9e-a7c8-cfef4a008685" absoluteBounds="9.515, 1.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.75 : 1.94399251302083); (1.75 : 2.34699625651042); (3.5 : 2.34699625651042)]" fixedFrom="Algorithm" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BeginnerDBDataContext/AspNetRole/AspNetRole_AspNetUserRole" />
+      <nodes>
+        <classShapeMoniker Id="e5af467d-c137-4dcf-b166-b1eef95f736b" />
+        <classShapeMoniker Id="cf511c7a-2308-4971-ae26-779b69730849" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 5.8670068359375); (1.75 : 7.41429768880208); (3.5 : 7.41429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BeginnerDBDataContext/AspNetUser/AspNetUser_AspNetUserClaim" />
+      <nodes>
+        <classShapeMoniker Id="552b1dca-a2ba-4f09-9441-ef41d06fd139" />
+        <classShapeMoniker Id="1102f19c-70ef-476f-9595-e85b0de65517" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 5.06814697265625); (3.5 : 5.06814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BeginnerDBDataContext/AspNetUser/AspNetUser_AspNetUserLogin" />
+      <nodes>
+        <classShapeMoniker Id="552b1dca-a2ba-4f09-9441-ef41d06fd139" />
+        <classShapeMoniker Id="4e4b4d49-c5cc-4558-9324-c1d892a442f1" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 2.75); (3.125 : 2.375); (3.125 : 3.31899251302083); (3.5 : 2.94399251302083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BeginnerDBDataContext/AspNetUser/AspNetUser_AspNetUserRole" />
+      <nodes>
+        <classShapeMoniker Id="552b1dca-a2ba-4f09-9441-ef41d06fd139" />
+        <classShapeMoniker Id="cf511c7a-2308-4971-ae26-779b69730849" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 5.34699625651042); (9.5 : 5.34699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BeginnerDBDataContext/CourseTbl/CourseTbl_StudentList" />
+      <nodes>
+        <classShapeMoniker Id="e045254b-0f0e-4da2-98b7-1fda2146dc51" />
+        <classShapeMoniker Id="246e13d9-9d1e-4bf3-b9ed-872bc5f288d4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 2.28929768880208); (9.5 : 2.28929768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BeginnerDBDataContext/MstSupplier/MstSupplier_TrnItem" />
+      <nodes>
+        <classShapeMoniker Id="16900572-4dd1-4591-a58f-65f7fb64e8de" />
+        <classShapeMoniker Id="eb798c39-2caa-4e44-8fc6-3ad1e2c86e6f" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
