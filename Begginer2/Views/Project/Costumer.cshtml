@@ -22,17 +22,14 @@
                     <input type="text" class="input-sm" />
                 </div>
                 <div class="col-sm-4" align="right">
-                    <a href="../project/dashboard" class="btn btn-danger">Close</a>
-                    <button type="button" class="btn btn-primary " id="myBtn" onclick="cmdAddButton_OnClick()">Add</button>
+                    <a href="../project/dashboard" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Close</a>
+                    <a class="btn btn-primary " id="myBtn" onclick="cmdAddButton_OnClick()"><i class="glyphicon glyphicon-plus"></i> Add</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <table id="costumerCollectionGrid" class="grid border-custom"></table>
-<div>
-    sadsa
-</div>
 <div>
     <div class="modal fade" id="myModal2" role="dialog">
         <div class="modal-dialog">
@@ -60,33 +57,44 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
                                     <label for="pwd">Address:</label>
                                     <input type="text" class="form-control requiredField" id="Address">
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
                                     <label for="pwd">Contact Number:</label>
                                     <input type="text" class="form-control requiredField" id="ContactNumber">
                                 </div>
-                            </div>
-                            <div class="form-group">
-
-                            </div>
-                            <div class="form-group">
-                                <label for="pwd">Credit Lemit:</label>
-                                <input type="text" class="form-control requiredField" id="CreditLimit">
+                                <div class="col-sm-12">
+                                    <label for="pwd">Credit Lemit:</label>
+                                    <input type="number" class="form-control requiredField" id="CreditLimit">
+                                </div>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="btnIDSaveCostumer" onclick="cmdAddCostumer()">Save</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <a class="btn btn-primary" id="btnIDSaveCostumer" onclick="cmdAddCostumer()"><i class="glyphicon glyphicon-save"></i> Save</a>
+                    <a class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Close</a>
                 </div>
             </div>
         </div>
     </div>
-
+</div>
+<!--Delete Costumer Modal -->
+<div class="modal fade" id="DeleteConfirm" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Delete Costumer? <i class="glyphicon glyphicon-trash"></i></h4>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger btn-sm" id="cmdConfirmDelete" onclick="cmdCostumerConfirmDelete_OnClick()">Delete</button>
+                <button id="cmdConfirmDeleteClose" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 
@@ -97,143 +105,30 @@
 <script type="text/javascript">
     var costumerGrid;
     var costumerList;
+    var CostumerID;
+    //function CostumerEntryValidate() {
+    //    var isValid = true;
+    //    $('.requiredField').each(function () {
+    //        if ($.trim($(this).val()) == '') {
+    //            isValid = false;
+    //            $(this).css({
+    //                "border": "1px solid red"
+    //            });
+    //        }
+    //        else {
+    //            $(this).css({
+    //                "border": "",
+    //            });
+    //        }
 
-
-    //Modal
-    //$(document).ready(function () {
-    //    $("#myBtn").click(function () {
-    //        $("#myModal2").modal();
     //    });
-    //});
-
-    //edit modal
-    //function cmdShowmodalClick() {
-    //    $("#myModal").modal({
-    //        show: true,
-    //        backdrop: 'static'
-    //    });
+    //    return isValid;
     //}
 
-    // Costumer Entry Validation
-    //
-    function CostumerEntryValidate() {
-        var isValid = true;
-        $('.requiredField').each(function () {
-            if ($.trim($(this).val()) == '') {
-                isValid = false;
-                $(this).css({
-                    "border": "1px solid red"
-                });
-            }
-            else {
-                $(this).css({
-                    "border": "",
-                });
-            }
 
-        });
-        return isValid;
-    }
-    // cmdAddCostumer
-    function cmdAddCostumer() {
-        var costumerObject = new Object();
-
-        costumerObject.Fname = document.getElementById("Fname").value;
-        costumerObject.Mname = document.getElementById("Mname").value;
-        costumerObject.Lname = document.getElementById("Lname").value;
-        costumerObject.Address = document.getElementById("Address").value;
-        costumerObject.ContactNumber = document.getElementById("ContactNumber").value;
-        costumerObject.CreditLimit = document.getElementById("CreditLimit").value;
-
-        var data = JSON.stringify(costumerObject);
-
-        var ID = document.getElementById("ID").value;
-        if (CostumerEntryValidate() == false) {
-            toastr.error("Fill out Form");
-        } else {
-            if (ID > 0) { // Update
-                var itemdata = data;
-                $('.dis').prop('disabled', true);
-                $.ajax({
-                    url: '/api/costumer/update/' + ID,
-                    type: 'POST',
-                    dataType: 'json',
-                    data: itemdata,
-                    contentType: "application/json;charset=utf-8",
-                    cache: false,
-                    statusCode: {
-                        200: function () {
-                            toastr.success("Update Success");
-                            $('#myModal2').modal('hide');
-                            refresh();
-                        },
-                        404: function () {
-                            toastr.error("Edit Failed");
-                        },
-                        400: function () {
-                            toastr.error("Edit Failed");
-                        }
-                    }
-                });
-            }
-            else { // ADD
-                $.ajax({
-                    url: '/api/costumer/add/',
-                    type: 'POST',
-                    data: data,
-                    contentType: "application/json;charset=utf-8",
-                    cache: false,
-                    statusCode: {
-                        200: function () {
-                            $('#myModal2').modal({
-                                show: false,
-                            });
-                            toastr.success("Saved");
-                            refresh();
-                        },
-                        400: function () {
-                            toastr.error("Error");
-                        }
-                    }
-                });
-            }
-        }
-    }
-
-    // Table Data
-
-    function getMstCostumer() {
-        var costumerList = new wijmo.collections.ObservableArray();
-        //var apiUrl = "/api/costumer/list";
-        $.ajax({
-            url: '/api/costumer/list',
-            cache: false,
-            type: 'GET',
-            contentType: 'application/json:charset=utf-8',
-            data: {},
-            success: function (result) {
-                if (result.length > 0) {
-                    for (var i = 0; i < result.length; i++) {
-                        costumerList.push({
-                            EditId: "<button class='btn btn-primary btn-xs btn-block' id='CostEditButton' onClick='cmdEditButton_OnClick()'><i class='fa fa-pencil'></i>Edit</button>",
-                            DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='CostDeleteButton' onClick='cmddeleteButton_Onclick()'><i class='fa fa-trash'></i>Delete</button>",
-                            Fname: result[i]["Fname"],
-                            Mname: result[i]["Mname"],
-                            Lname: result[i]["Lname"],
-                            Address: result[i]["Address"],
-                            ContactNumber: result[i]["ContactNumber"],
-                            CreditLimit: result[i]["CreditLimit"]
-                        });
-                    }
-                }
-            }
-        });
-        return costumerList;
-    }
-
-    //
+    //==================
     // Add modal Button Click
-    //
+    //==================
     function cmdAddButton_OnClick() {
         $('#myModal2').modal({
             show: true,
@@ -244,6 +139,7 @@
                 "border": "",
             });
         });
+        CostumerID = 0
         document.getElementById("Fname").value = "";
         document.getElementById("Mname").value = "";
         document.getElementById("Lname").value = "";
@@ -268,7 +164,7 @@
                 "border": "",
             });
         });
-
+        CostumerID = costumerList.currentItem.ID;
         document.getElementById("Fname").value = costumerList.currentItem.Fname;
         document.getElementById("Mname").value = costumerList.currentItem.Mname;
         document.getElementById("Lname").value = costumerList.currentItem.Lname;
@@ -277,9 +173,165 @@
         document.getElementById("CreditLimit").value = costumerList.currentItem.CreditLimit;
         document.getElementById("btnIDSaveCostumer").innerHTML = "Update"
     }
+    //=================
+    // cmdAddCostumer
+    //================
+    function cmdAddCostumer() {
 
+        var customerObject = {
+            Fname: document.getElementById("Fname").value,
+            Mname: document.getElementById("Mname").value,
+            Lname: document.getElementById("Lname").value,
+            Address: document.getElementById("Address").value,
+            ContactNuber: document.getElementById("ContactNumber").value,
+            CreditLimit: document.getElementById("CreditLimit").value
+        }
+        var data = JSON.stringify(customerObject);
+
+        if (CostumerID == 0) {
+            //------------
+            //Add
+            //------------
+            $.ajax({
+                url: '/api/costumer/add/',
+                type: 'POST',
+                data: data,
+                contentType: "application/json;charset=utf-8",
+                cache: false,
+                statusCode: {
+                    200: function () {
+                        toastr.success("Saved");
+                        $('#myModal2').modal({
+                            show: false,
+                        });
+                        //location.reload();
+                        refresh();
+                    },
+                    400: function () {
+                        toastr.error("Unable to Save");
+                    }
+                }
+            });
+        } else {
+            //---------------
+            // Update
+            //--------------
+            //$('.dis').prop('disabled', true);
+            $.ajax({
+                url: '/api/costumer/update/' + CostumerID,
+                type: 'PUT',
+                dataType: "json",
+                data: data,
+                contentType: "application/json;charset=utf-8",
+                statusCode: {
+                    200: function () {
+                        toastr.success("Update Success");
+                        $('#myModal2').modal('hide');
+                        refresh();
+                    },
+                    404: function () {
+                        toastr.error("Edit Failed");
+                    },
+                    400: function () {
+                        toastr.error("Edit Failed");
+                    }
+                }
+            });
+        }
+    }
+
+    //====================
+    // Table Data
+    //====================
+    function getMstCostumer() {
+        var costumerList = new wijmo.collections.ObservableArray();
+        //var apiUrl = "/api/costumer/list";
+        $.ajax({
+            url: '/api/costumer/list',
+            cache: false,
+            type: 'GET',
+            contentType: 'application/json:charset=utf-8',
+            data: {},
+            success: function (result) {
+                if (result.length > 0) {
+                    for (var i = 0; i < result.length; i++) {
+                        costumerList.push({
+                            EditId: "<button class='btn btn-primary btn-xs btn-block' id='CostEditButton' onClick='cmdEditButton_OnClick()'><i class='glyphicon glyphicon-pencil'></i> Edit</button>",
+                            DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='CostDeleteButton' onClick='cmddeleteButton_Onclick()'><i class='glyphicon glyphicon-trash'></i> Delete</button>",
+                            ID: result[i]["ID"],
+                            Fname: result[i]["Fname"],
+                            Mname: result[i]["Mname"],
+                            Lname: result[i]["Lname"],
+                            Address: result[i]["Address"],
+                            ContactNumber: result[i]["ContactNumber"],
+                            CreditLimit: result[i]["CreditLimit"]
+                        });
+                    }
+                }
+            }
+        });
+        return costumerList;
+    }
+
+    //====================
+    //Delete Data
+    //====================
+    function cmddeleteButton_Onclick() {
+        //----------------------------
+        //console.log(typeof ID + ID);
+        //----------------------------
+        $('#DeleteConfirm').modal({
+            show: true,
+            backdrop: 'static'
+        });
+        $('#cmdConfirmDelete').prop("disabled", false);
+        $('#cmdConfirmDeleteClose').prop("disabled", false);
+    }
+    //------------------------
+    //Costumer Confirm Delete
+    //------------------------
+    function cmdCostumerConfirmDelete_OnClick() {
+        $('#cmdConfirmDelete').prop("disabled", false);
+        $('#cmdConfirmDeleteClose').prop("disabled", false);
+
+
+        costumerList.editItem(costumerList.currentItem);
+        var ID = costumerList.currentItem.ID;
+        $.ajax({
+            url: '/api/costumer/delete/' + ID,
+            type: "DELETE",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            statusCode: {
+                200: function () {
+                    toastr.success("Succesfully Deleted");
+                    $("#cmdConfirmDelete").prop("disabled", true);
+                    $("#cmdConfirmDeleteClose").prop("disabled", true);
+                    $("#DeleteConfirm").modal('hide');
+                    //------------------------
+                    //location.reload(1500)
+                    //------------------------
+                    refresh()
+                },
+                404: function () {
+                    toastr.error("request Not Found");
+                    $("#DeleteConfirm").modal('hide');
+                    $('#cmdConfirmDelete').prop("disabled", false);
+                    $('#cmdConfirmDeleteClose').prop("disabled", false);
+                },
+                400: function () {
+                    toastr.error("Can't be deleted");
+                    $("#DeleteConfirm").modal('hide');
+                    $('#cmdConfirmDelete').prop("disabled", false);
+                    $('#cmdConfirmDeleteClose').prop("disabled", false);
+                }
+            }
+        });
+    }
+
+    //=================
     // On Page Load
-
+    //==================
     $(document).ready(function () {
         costumerList = new wijmo.collections.CollectionView(getMstCostumer());
         costumerList.pageSize = 15;

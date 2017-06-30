@@ -225,6 +225,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\SimpleSidebar.css" />
     <Content Include="Content\Tabular.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="Content\wijmo.css" />
     <Content Include="Content\wijmo.min.css" />
     <Content Include="Data\Untitled.png" />
@@ -254,6 +256,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\wijmo.chart.min.js" />
     <Content Include="Scripts\wijmo.grid.min.js" />
     <Content Include="Scripts\wijmo.min.js" />
@@ -299,6 +302,7 @@
     <Content Include="Views\Shared\NavBarD.cshtml" />
     <Content Include="Views\Project\Dashboard.cshtml" />
     <Content Include="Views\Project\Costumer.cshtml" />
+    <Content Include="Scripts\toastr.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -53,7 +53,7 @@ namespace Begginer2.APIController
         //
         // UPDATE
         //
-        [HttpPost]
+        [HttpPut]
         [ Route("api/costumer/update/{id}")]
         public HttpResponseMessage update(String id, Entites.Costmuer item)
         {
@@ -102,7 +102,7 @@ namespace Begginer2.APIController
                 newCostumer.Mname = addCostumer.Mname;
                 newCostumer.Lname = addCostumer.Lname != null ? addCostumer.Lname : "NA";
                 newCostumer.Addres = addCostumer.Address != null ? addCostumer.Address : "NA";
-                newCostumer.ContactNumber = addCostumer.ContactNumber != null ? addCostumer.ContactNumber : "09";
+                newCostumer.ContactNumber = addCostumer.ContactNumber != null ? addCostumer.ContactNumber : "NA";
                 newCostumer.CreditLimit = addCostumer.CreditLimit;
 
                 
@@ -115,6 +115,31 @@ namespace Begginer2.APIController
             catch (Exception e)
             {
                 Debug.WriteLine(e);
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+        }
+        //Delete Costumer
+        [HttpDelete,Route("api/costumer/delete/{id}")]
+        public HttpResponseMessage Delete(String id)
+        {
+            try
+            {
+                var costumers = from d in db.MstCostumers where d.ID == Convert.ToInt32(id) select d;
+
+                if (costumers.Any())
+                {
+                    db.MstCostumers.DeleteOnSubmit(costumers.First());
+                    db.SubmitChanges();
+
+                    return Request.CreateResponse(HttpStatusCode.OK);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound);
+                }
+            }
+            catch
+            {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
         }

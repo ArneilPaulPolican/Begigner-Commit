@@ -28,7 +28,8 @@ namespace Begginer2
                       "~/Content/site.css",
                       "~/Content/wijmo.min.css",
                       "~/Content/wijmo.css",
-                      "~/Content/SimpleSidebar.css"
+                      "~/Content/SimpleSidebar.css",
+                      "~/Content/toastr.min.css"
                       //"~/Content/Tabular.css"
                       ));
             bundles.Add(new ScriptBundle("~/bundles/software-js").Include(
@@ -36,7 +37,8 @@ namespace Begginer2
                       "~/Scripts/respond.js",
                       "~/Scripts/wijmo.min.js",
                       "~/Scripts/wijmo.grid.min.js",
-                      "~/Scripts/wijmo.chart.min.js"
+                      "~/Scripts/wijmo.chart.min.js",
+                      "~/Scripts/toastr.min.js"
                 ));
         }
     }
